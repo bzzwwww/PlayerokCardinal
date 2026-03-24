@@ -3,9 +3,6 @@
 
 > GitHub Release, Windows-установка и Ubuntu bootstrap теперь описаны в [RELEASE.md](RELEASE.md).
 
-<h2 align="center">Перед началом настоятельно рекомендую залететь в наш <a href="https://t.me/bzwwplugins_bot">Telegram
-чат (клик)</a>. Тут и поможем чем сможем и посидеть можно.</h2>
-
 ## 📋 **Содержание**
 
 - [Возможности](#robot-возможности)
