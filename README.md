@@ -91,7 +91,7 @@
 
 ### ♨️ Linux (Ubuntu)
 
-1. Выполните команду:`wget https://raw.githubusercontent.com/<OWNER>/<REPO>/main/install-poc.sh -O install-poc.sh && bash install-poc.sh`
+1. Выполните команду:`wget -qO- https://raw.githubusercontent.com/bzzwwww/PlayerokCardinal/main/install-ubuntu.sh | sudo bash -s -- --repo bzzwwww/PlayerokCardinal --ref main`
 2. Следуйте инструкциям установщика. Данный скрипт автоматически установит всё необходимое и запустит бота как фоновый процесс.
 
 ## 🔌 Установка плагинов

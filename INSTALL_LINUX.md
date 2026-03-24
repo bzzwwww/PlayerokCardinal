@@ -19,13 +19,13 @@
 ### Шаг 1: Скачайте установочный скрипт
 
 ```bash
-wget -qO- https://raw.githubusercontent.com/<OWNER>/<REPO>/<TAG>/install-ubuntu.sh | sudo bash -s -- --repo <OWNER>/<REPO> --ref <TAG>
+wget -qO- https://raw.githubusercontent.com/bzzwwww/PlayerokCardinal/main/install-ubuntu.sh | sudo bash -s -- --repo bzzwwww/PlayerokCardinal --ref main
 ```
 
 Или с помощью `curl`:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/<OWNER>/<REPO>/<TAG>/install-ubuntu.sh | sudo bash -s -- --repo <OWNER>/<REPO> --ref <TAG>
+curl -fsSL https://raw.githubusercontent.com/bzzwwww/PlayerokCardinal/main/install-ubuntu.sh | sudo bash -s -- --repo bzzwwww/PlayerokCardinal --ref main
 ```
 
 ### Шаг 2: Сделайте скрипт исполняемым
@@ -153,7 +153,7 @@ sudo useradd -m poc
 ### 3. Скачайте бота
 
 ```bash
-sudo -u poc git clone https://github.com/<OWNER>/<REPO>.git /home/poc/PlayerokCardinal
+sudo -u poc git clone https://github.com/bzzwwww/PlayerokCardinal.git /home/poc/PlayerokCardinal
 ```
 
 ### 4. Создайте виртуальное окружение
@@ -294,9 +294,9 @@ sudo kill -9 <PID>
 
 ## 📞 Поддержка
 
-- **GitHub**: [OWNER/REPO](https://github.com/<OWNER>/<REPO>)
+- **GitHub**: [bzzwwww/PlayerokCardinal](https://github.com/bzzwwww/PlayerokCardinal)
 - **Telegram**: [@bzzwwww](https://t.me/bzzwwww)
-- **Issues**: [Сообщить о проблеме](https://github.com/<OWNER>/<REPO>/issues)
+- **Issues**: [Сообщить о проблеме](https://github.com/bzzwwww/PlayerokCardinal/issues)
 
 ---
 

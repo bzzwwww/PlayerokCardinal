@@ -104,5 +104,5 @@ Token обычно действителен **30 дней**. После исте
 ## 📞 Поддержка
 
 Если возникли проблемы:
-- **GitHub**: [Issues](https://github.com/<OWNER>/<REPO>/issues)
+- **GitHub**: [Issues](https://github.com/bzzwwww/PlayerokCardinal/issues)
 - **Telegram**: [@bzzwwww](https://t.me/bzzwwww)

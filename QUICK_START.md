@@ -7,7 +7,7 @@
 ### 1. Скачай и запусти установку:
 
 ```bash
-wget -qO- https://raw.githubusercontent.com/<OWNER>/<REPO>/<TAG>/install-ubuntu.sh | sudo bash -s -- --repo <OWNER>/<REPO> --ref <TAG>
+wget -qO- https://raw.githubusercontent.com/bzzwwww/PlayerokCardinal/main/install-ubuntu.sh | sudo bash -s -- --repo bzzwwww/PlayerokCardinal --ref main
 ```
 
 ### 2. При установке введи:
@@ -108,4 +108,4 @@ python main.py
 ## 📞 Нужна помощь?
 
 - **Telegram**: [@bzzwwww](https://t.me/bzzwwww)
-- **GitHub Issues**: [Сообщить о проблеме](https://github.com/<OWNER>/<REPO>/issues)
+- **GitHub Issues**: [Сообщить о проблеме](https://github.com/bzzwwww/PlayerokCardinal/issues)

@@ -8,7 +8,7 @@ if [[ -f "${LOCAL_INSTALLER}" ]]; then
   exec bash "${LOCAL_INSTALLER}" "$@"
 fi
 
-INSTALL_URL="https://raw.githubusercontent.com/__GITHUB_REPO__/__GITHUB_REF__/install-ubuntu.sh"
+INSTALL_URL="https://raw.githubusercontent.com/bzzwwww/PlayerokCardinal/main/install-ubuntu.sh"
 TMP_FILE="$(mktemp)"
 trap 'rm -f "${TMP_FILE}"' EXIT
 
