@@ -203,8 +203,9 @@ mkdir -p "${INSTALL_DIR}/configs" "${INSTALL_DIR}/logs" "${INSTALL_DIR}/storage/
 : > "${INSTALL_DIR}/configs/auto_response.cfg"
 chown -R "${BOT_USER}:${BOT_USER}" "${INSTALL_DIR}"
 
-if [[ ! -d "${VENV_DIR}" ]]; then
+if [[ ! -x "${VENV_DIR}/bin/python" ]]; then
   info "Creating Python virtual environment"
+  rm -rf "${VENV_DIR}"
   run_as_bot_user python3 -m venv "${VENV_DIR}"
 fi
 
