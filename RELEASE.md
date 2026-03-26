@@ -4,15 +4,15 @@
 
 ## Что входит в релиз
 
-- `PlayerokCardinal-1.1.1-windows.zip`
-- `PlayerokCardinal-1.1.1-linux.tar.gz`
+- `PlayerokCardinal-1.1.2-windows.zip`
+- `PlayerokCardinal-1.1.2-linux.tar.gz`
 - `install-ubuntu.sh` для установки через `wget`
 
 ## Установка
 
 ### Windows
 
-1. Скачайте `PlayerokCardinal-1.1.1-windows.zip` из GitHub Release.
+1. Скачайте `PlayerokCardinal-1.1.2-windows.zip` из GitHub Release.
 2. Распакуйте архив.
 3. Запустите `Setup.bat`.
 4. После установки зависимостей запустите `Start.bat`.
@@ -20,19 +20,19 @@
 ### Ubuntu
 
 ```bash
-wget -qO- https://raw.githubusercontent.com/bzzwwww/PlayerokCardinal/main/install-ubuntu.sh | sudo bash -s -- --repo bzzwwww/PlayerokCardinal --ref v1.1.1
+wget -qO- https://raw.githubusercontent.com/bzzwwww/PlayerokCardinal/main/install-ubuntu.sh | sudo bash -s -- --repo bzzwwww/PlayerokCardinal --ref v1.1.2
 ```
 
 Дополнительно можно указать пользователя:
 
 ```bash
-wget -qO- https://raw.githubusercontent.com/bzzwwww/PlayerokCardinal/main/install-ubuntu.sh | sudo bash -s -- --repo bzzwwww/PlayerokCardinal --ref v1.1.1 --user playerok
+wget -qO- https://raw.githubusercontent.com/bzzwwww/PlayerokCardinal/main/install-ubuntu.sh | sudo bash -s -- --repo bzzwwww/PlayerokCardinal --ref v1.1.2 --user playerok
 ```
 
 ## Сборка релиза локально
 
 ```bash
-python tools/build_release.py --github-repo bzzwwww/PlayerokCardinal --github-ref v1.1.1
+python tools/build_release.py --github-repo bzzwwww/PlayerokCardinal --github-ref v1.1.2
 ```
 
 Готовые архивы появятся в папке `dist`.

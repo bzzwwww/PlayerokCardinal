@@ -91,7 +91,7 @@
 
 ### ♨️ Linux (Ubuntu)
 
-1. Выполните команду:`wget -qO- https://raw.githubusercontent.com/bzzwwww/PlayerokCardinal/main/install-ubuntu.sh | sudo bash -s -- --repo bzzwwww/PlayerokCardinal --ref v1.1.1`
+1. Выполните команду:`wget -qO- https://raw.githubusercontent.com/bzzwwww/PlayerokCardinal/main/install-ubuntu.sh | sudo bash -s -- --repo bzzwwww/PlayerokCardinal --ref v1.1.2`
 2. Следуйте инструкциям установщика. Данный скрипт автоматически установит всё необходимое и запустит бота как фоновый процесс.
 
 ## 🔌 Установка плагинов

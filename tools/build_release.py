@@ -127,7 +127,7 @@ def main() -> None:
     parser.add_argument("--repo-root", default=None, help="Repository root. Defaults to the current script parent.")
     parser.add_argument("--output-dir", default=None, help="Output directory for built archives.")
     parser.add_argument("--github-repo", default=PLACEHOLDERS["__GITHUB_REPO__"], help="GitHub repo slug, for example owner/repo.")
-    parser.add_argument("--github-ref", default=None, help="GitHub tag or ref, for example v1.1.1.")
+    parser.add_argument("--github-ref", default=None, help="GitHub tag or ref, for example v1.1.2.")
     args = parser.parse_args()
 
     repo_root = Path(args.repo_root).resolve() if args.repo_root else Path(__file__).resolve().parents[1]

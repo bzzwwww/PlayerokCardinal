@@ -38,7 +38,20 @@ default_config = {
 
 def safe_input(prompt: str) -> str:
     try:
-        return input(prompt).strip()
+        tty_input = "CONIN$" if os.name == "nt" else "/dev/tty"
+        tty_output = "CONOUT$" if os.name == "nt" else "/dev/tty"
+
+        try:
+            with open(tty_output, "w") as out_stream:
+                out_stream.write(prompt)
+                out_stream.flush()
+            with open(tty_input, "r") as in_stream:
+                line = in_stream.readline()
+            if not line:
+                raise EOFError
+            return line.strip()
+        except OSError:
+            return input(prompt).strip()
     except EOFError:
         print(
             f"\n{Fore.RED}{Style.BRIGHT}Ввод прерван. Запусти первичную настройку в интерактивном терминале и попробуй еще раз.{Style.RESET_ALL}"
