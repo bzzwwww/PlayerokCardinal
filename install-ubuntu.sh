@@ -2,9 +2,9 @@
 set -euo pipefail
 
 APP_NAME="PlayerokCardinal"
-APP_VERSION="1.1.0"
+APP_VERSION="1.1.1"
 DEFAULT_REPO="bzzwwww/PlayerokCardinal"
-DEFAULT_REF="v1.1.0"
+DEFAULT_REF="v1.1.1"
 
 GITHUB_REPO="${DEFAULT_REPO}"
 GITHUB_REF="${DEFAULT_REF}"
