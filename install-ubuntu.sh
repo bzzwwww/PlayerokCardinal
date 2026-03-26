@@ -2,9 +2,9 @@
 set -euo pipefail
 
 APP_NAME="PlayerokCardinal"
-APP_VERSION="__APP_VERSION__"
+APP_VERSION="1.1.0"
 DEFAULT_REPO="bzzwwww/PlayerokCardinal"
-DEFAULT_REF="main"
+DEFAULT_REF="v1.1.0"
 
 GITHUB_REPO="${DEFAULT_REPO}"
 GITHUB_REF="${DEFAULT_REF}"
@@ -18,7 +18,7 @@ Usage: sudo bash install-ubuntu.sh [options]
 
 Options:
   --repo owner/repo   GitHub repository slug.
-  --ref ref           Git tag or release ref, for example v${APP_VERSION}.
+  --ref ref           Git tag, release ref, or branch name. Default: ${DEFAULT_REF}
   --user username     Linux user for the bot.
   --dir path          Custom installation directory.
   --skip-service      Do not install or start systemd service.
@@ -126,12 +126,16 @@ apt-get install -y python3 python3-venv python3-pip curl wget tar
 
 ASSET_URL="https://github.com/${GITHUB_REPO}/releases/download/${GITHUB_REF}/${APP_NAME}-${APP_VERSION}-linux.tar.gz"
 TAG_ARCHIVE_URL="https://github.com/${GITHUB_REPO}/archive/refs/tags/${GITHUB_REF}.tar.gz"
+BRANCH_ARCHIVE_URL="https://github.com/${GITHUB_REPO}/archive/refs/heads/${GITHUB_REF}.tar.gz"
 ARCHIVE_PATH="${TMP_DIR}/${APP_NAME}.tar.gz"
 
 info "Downloading release package"
 if ! download_file "${ASSET_URL}" "${ARCHIVE_PATH}"; then
   info "Release asset not found, trying tag archive"
-  download_file "${TAG_ARCHIVE_URL}" "${ARCHIVE_PATH}" || fail "Failed to download release package."
+  if ! download_file "${TAG_ARCHIVE_URL}" "${ARCHIVE_PATH}"; then
+    info "Tag archive not found, trying branch archive"
+    download_file "${BRANCH_ARCHIVE_URL}" "${ARCHIVE_PATH}" || fail "Failed to download release package."
+  fi
 fi
 
 mkdir -p "${TMP_DIR}/extract"
