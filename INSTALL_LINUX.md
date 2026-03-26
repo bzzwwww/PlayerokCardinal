@@ -19,13 +19,13 @@
 ### Шаг 1: Скачайте установочный скрипт
 
 ```bash
-wget -qO- https://raw.githubusercontent.com/bzzwwww/PlayerokCardinal/main/install-ubuntu.sh | sudo bash -s -- --repo bzzwwww/PlayerokCardinal --ref v1.1.2
+wget -qO- https://raw.githubusercontent.com/bzzwwww/PlayerokCardinal/main/install-ubuntu.sh | sudo bash -s -- --repo bzzwwww/PlayerokCardinal --ref v1.1.3
 ```
 
 Или с помощью `curl`:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/bzzwwww/PlayerokCardinal/main/install-ubuntu.sh | sudo bash -s -- --repo bzzwwww/PlayerokCardinal --ref v1.1.2
+curl -fsSL https://raw.githubusercontent.com/bzzwwww/PlayerokCardinal/main/install-ubuntu.sh | sudo bash -s -- --repo bzzwwww/PlayerokCardinal --ref v1.1.3
 ```
 
 ### Шаг 2: Сделайте скрипт исполняемым

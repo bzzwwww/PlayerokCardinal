@@ -7,7 +7,7 @@
 ### 1. Скачай и запусти установку:
 
 ```bash
-wget -qO- https://raw.githubusercontent.com/bzzwwww/PlayerokCardinal/main/install-ubuntu.sh | sudo bash -s -- --repo bzzwwww/PlayerokCardinal --ref v1.1.2
+wget -qO- https://raw.githubusercontent.com/bzzwwww/PlayerokCardinal/main/install-ubuntu.sh | sudo bash -s -- --repo bzzwwww/PlayerokCardinal --ref v1.1.3
 ```
 
 ### 2. При установке введи:

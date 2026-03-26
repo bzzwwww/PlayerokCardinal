@@ -1,10 +1,15 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+export LANG="C.UTF-8"
+export LC_ALL="C.UTF-8"
+export PYTHONUTF8="1"
+export PYTHONIOENCODING="utf-8"
+
 APP_NAME="PlayerokCardinal"
-APP_VERSION="1.1.2"
+APP_VERSION="1.1.3"
 DEFAULT_REPO="bzzwwww/PlayerokCardinal"
-DEFAULT_REF="v1.1.2"
+DEFAULT_REF="v1.1.3"
 
 GITHUB_REPO="${DEFAULT_REPO}"
 GITHUB_REF="${DEFAULT_REF}"
@@ -49,18 +54,40 @@ tty_read() {
 }
 
 run_as_bot_user() {
-  runuser -u "${BOT_USER}" -- "$@"
+  runuser -u "${BOT_USER}" -- env -i \
+    HOME="${HOME_DIR}" \
+    USER="${BOT_USER}" \
+    LOGNAME="${BOT_USER}" \
+    SHELL="/bin/bash" \
+    PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" \
+    LANG="${LANG}" \
+    LC_ALL="${LC_ALL}" \
+    PYTHONUTF8="${PYTHONUTF8}" \
+    PYTHONIOENCODING="${PYTHONIOENCODING}" \
+    TERM="xterm-256color" \
+    "$@"
 }
 
 run_as_bot_shell() {
-  runuser -u "${BOT_USER}" -- bash -lc "$1"
+  runuser -u "${BOT_USER}" -- env -i \
+    HOME="${HOME_DIR}" \
+    USER="${BOT_USER}" \
+    LOGNAME="${BOT_USER}" \
+    SHELL="/bin/bash" \
+    PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" \
+    LANG="${LANG}" \
+    LC_ALL="${LC_ALL}" \
+    PYTHONUTF8="${PYTHONUTF8}" \
+    PYTHONIOENCODING="${PYTHONIOENCODING}" \
+    TERM="xterm-256color" \
+    bash -lc "$1"
 }
 
 run_first_setup() {
   local cmd="cd '${INSTALL_DIR}' && '${VENV_DIR}/bin/python' main.py"
 
   if [[ -r /dev/tty ]]; then
-    runuser -u "${BOT_USER}" -- bash -lc "$cmd" </dev/tty >/dev/tty 2>/dev/tty
+    run_as_bot_shell "$cmd" </dev/tty >/dev/tty 2>/dev/tty
     return
   fi
 
