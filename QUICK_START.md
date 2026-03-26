@@ -25,7 +25,7 @@ wget -qO- https://raw.githubusercontent.com/bzzwwww/PlayerokCardinal/main/instal
 
 ✅ **Telegram Bot Token** (от @BotFather)
    - Пример: `7257913369:AAG2KjLL3-zvvfSQFSVhaTb4w7tR2iXsJXM`
-   - Username должен начинаться с `playerok`
+   - Подойдет любой корректный Telegram Bot Token
 
 ✅ **Пароль для бота** (8+ символов)
    - Заглавные + строчные буквы + цифры

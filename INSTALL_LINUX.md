@@ -46,7 +46,7 @@ curl -fsSL https://raw.githubusercontent.com/bzzwwww/PlayerokCardinal/main/insta
 2. **User Agent** (можно пропустить Enter)
    - Узнать на https://whatmyuseragent.com
 3. **Telegram Bot Token** (от @BotFather)
-   - Username бота должен начинаться с `playerok`
+   - Подойдет любой корректный Telegram Bot Token
 4. **Пароль для бота** (8+ символов, буквы + цифры)
 5. **Прокси** (опционально, формат: `login:password@ip:port` или `ip:port`)
 

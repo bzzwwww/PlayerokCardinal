@@ -35,6 +35,16 @@ default_config = {
     }
 }
 
+
+def safe_input(prompt: str) -> str:
+    try:
+        return input(prompt).strip()
+    except EOFError:
+        print(
+            f"\n{Fore.RED}{Style.BRIGHT}Ввод прерван. Запусти первичную настройку в интерактивном терминале и попробуй еще раз.{Style.RESET_ALL}"
+        )
+        raise SystemExit(1)
+
 def create_configs():
     if not os.path.exists("configs/auto_response.cfg"):
         with open("configs/auto_response.cfg", "w", encoding="utf-8"):
@@ -74,7 +84,7 @@ def first_setup():
     while True:
         print(f"\n{Fore.MAGENTA}{Style.BRIGHT}┌── {Fore.CYAN}"
               f"Введи токен (token) твоего Playerok аккаунта (можно найти в Cookie) {Fore.RED}(._.){Style.RESET_ALL}")
-        token = input(f"{Fore.MAGENTA}{Style.BRIGHT}└───> {Style.RESET_ALL}").strip()
+        token = safe_input(f"{Fore.MAGENTA}{Style.BRIGHT}└───> {Style.RESET_ALL}")
         if len(token) > 10:
             config.set("Playerok", "token", token)
             break
@@ -85,7 +95,7 @@ def first_setup():
         print(f"\n{Fore.MAGENTA}{Style.BRIGHT}┌── {Fore.CYAN}"
               f"Если хочешь, можешь указать свой User-agent (введи в Google \"my user agent\"). Или просто нажми Enter. "
               f"{Fore.RED}¯\\(°_o)/¯{Style.RESET_ALL}")
-        user_agent = input(f"{Fore.MAGENTA}{Style.BRIGHT}└───> {Style.RESET_ALL}").strip()
+        user_agent = safe_input(f"{Fore.MAGENTA}{Style.BRIGHT}└───> {Style.RESET_ALL}")
         if contains_russian(user_agent):
             print(f"\n{Fore.CYAN}{Style.BRIGHT}Ты не знаешь, что такое Google? {Fore.RED}\\(!!˚0˚)/{Style.RESET_ALL}")
             continue
@@ -96,15 +106,12 @@ def first_setup():
     while True:
         print(
             f"\n{Fore.MAGENTA}{Style.BRIGHT}┌── {Fore.CYAN}Введи API-токен Telegram-бота (получить можно у @BotFather). "
-            f"@username бота должен начинаться с \"playerok\". {Fore.RED}(._.){Style.RESET_ALL}")
-        token = input(f"{Fore.MAGENTA}{Style.BRIGHT}└───> {Style.RESET_ALL}").strip()
+            f"Подойдет любой корректный токен. {Fore.RED}(._.){Style.RESET_ALL}")
+        token = safe_input(f"{Fore.MAGENTA}{Style.BRIGHT}└───> {Style.RESET_ALL}")
         try:
-            if not token or not token.split(":")[0].isdigit():
+            if not token or ":" not in token or not token.split(":", 1)[0].isdigit():
                 raise Exception("Неправильный формат токена")
-            username = telebot.TeleBot(token).get_me().username
-            if not username.lower().startswith("playerok"):
-                print(f"\n{Fore.CYAN}{Style.BRIGHT}@username бота должен начинаться с \"playerok\"! {Fore.RED}\\(!!˚0˚)/{Style.RESET_ALL}")
-                continue
+            telebot.TeleBot(token).get_me()
         except Exception as ex:
             s = ""
             if str(ex):
@@ -117,7 +124,7 @@ def first_setup():
         print(
             f"\n{Fore.MAGENTA}{Style.BRIGHT}┌── {Fore.CYAN}Придумай пароль (его потребует Telegram-бот). Пароль должен содержать более 8 символов, заглавные, строчные буквы и хотя бы одну цифру "
             f" {Fore.RED}ᴖ̮ ̮ᴖ{Style.RESET_ALL}")
-        password = input(f"{Fore.MAGENTA}{Style.BRIGHT}└───> {Style.RESET_ALL}").strip()
+        password = safe_input(f"{Fore.MAGENTA}{Style.BRIGHT}└───> {Style.RESET_ALL}")
         if len(password) < 8 or password.lower() == password or password.upper() == password or not any([i.isdigit() for i in password]):
             print(f"\n{Fore.CYAN}{Style.BRIGHT}Это плохой пароль. Попробуй еще раз! {Fore.RED}\\(!!˚0˚)/{Style.RESET_ALL}")
             continue
@@ -131,7 +138,7 @@ def first_setup():
         print(f"\n{Fore.MAGENTA}{Style.BRIGHT}┌── {Fore.CYAN}"
               f"Если хочешь использовать IPv4 прокси – укажи их в формате login:password@ip:port или ip:port. Если не нужны - просто нажми Enter. "
               f"{Fore.RED}(* ^ ω ^){Style.RESET_ALL}")
-        proxy = input(f"{Fore.MAGENTA}{Style.BRIGHT}└───> {Style.RESET_ALL}").strip()
+        proxy = safe_input(f"{Fore.MAGENTA}{Style.BRIGHT}└───> {Style.RESET_ALL}")
         if proxy:
             try:
                 login, password, ip, port = validate_proxy(proxy)

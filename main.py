@@ -42,6 +42,7 @@ logo = """\033[38;5;0m.\033[0m\033[38;5;0m.\033[0m\033[38;5;0m.\033[0m\033[38;5;
 \033[38;5;0m.\033[0m\033[38;5;0m.\033[0m\033[38;5;0m.\033[0m\033[38;5;0m.\033[0m\033[38;5;0m.\033[0m\033[38;5;0m.\033[0m\033[38;5;0m.\033[0m\033[38;5;0m.\033[0m\033[38;5;0m.\033[0m\033[38;5;0m.\033[0m\033[38;5;0m.\033[0m\033[38;5;0m.\033[0m\033[38;5;0m.\033[0m\033[38;5;0m.\033[0m\033[38;5;0m.\033[0m\033[38;5;0m.\033[0m\033[38;5;0m.\033[0m\033[38;5;0m.\033[0m\033[38;5;0m.\033[0m\033[38;5;0m.\033[0m\033[38;5;0m.\033[0m"""
 
 VERSION = "1.1.0"
+GITHUB_REPO = os.getenv("POC_GITHUB_REPO", "bzzwwww/PlayerokCardinal")
 
 Utils.cardinal_tools.set_console_title(f"Playerok Cardinal v{VERSION}")
 
@@ -71,7 +72,7 @@ logger.debug("------------------------------------------------------------------
 print(f"{Style.RESET_ALL}{logo}")
 print(f"{Fore.RED}{Style.BRIGHT}v{VERSION}{Style.RESET_ALL}\n")
 print(f"{Fore.MAGENTA}{Style.BRIGHT}By {Fore.CYAN}{Style.BRIGHT}@bzzwwww{Style.RESET_ALL}")
-print(f"{Fore.MAGENTA}{Style.BRIGHT} * GitHub: {Fore.CYAN}{Style.BRIGHT}github.com/YOURNAME/REPO{Style.RESET_ALL}")
+print(f"{Fore.MAGENTA}{Style.BRIGHT} * GitHub: {Fore.CYAN}{Style.BRIGHT}github.com/{GITHUB_REPO}{Style.RESET_ALL}")
 print(f"{Fore.MAGENTA}{Style.BRIGHT} * Telegram: {Fore.CYAN}{Style.BRIGHT}t.me/bzwwplugins_bot{Style.RESET_ALL}")
 
 if not os.path.exists("configs/_main.cfg"):
