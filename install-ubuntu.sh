@@ -35,12 +35,36 @@ fail() {
   exit 1
 }
 
+tty_read() {
+  local prompt="$1"
+  local value=""
+
+  if [[ -r /dev/tty ]]; then
+    read -r -p "$prompt" value </dev/tty
+  else
+    read -r -p "$prompt" value
+  fi
+
+  printf '%s' "$value"
+}
+
 run_as_bot_user() {
   runuser -u "${BOT_USER}" -- "$@"
 }
 
 run_as_bot_shell() {
   runuser -u "${BOT_USER}" -- bash -lc "$1"
+}
+
+run_first_setup() {
+  local cmd="cd '${INSTALL_DIR}' && '${VENV_DIR}/bin/python' main.py"
+
+  if [[ -r /dev/tty ]]; then
+    runuser -u "${BOT_USER}" -- bash -lc "$cmd" </dev/tty >/dev/tty 2>/dev/tty
+    return
+  fi
+
+  fail "Interactive first setup requires a TTY. Re-run the installer in a terminal or create configs/_main.cfg manually."
 }
 
 download_file() {
@@ -105,7 +129,7 @@ if [[ -z "${GITHUB_REF}" || "${GITHUB_REF}" == "__GITHUB_REF__" ]]; then
 fi
 
 if [[ -z "${BOT_USER}" ]]; then
-  read -r -p "Linux user for ${APP_NAME} [playerok]: " BOT_USER
+  BOT_USER="$(tty_read "Linux user for ${APP_NAME} [playerok]: ")"
   BOT_USER="${BOT_USER:-playerok}"
 fi
 
@@ -163,7 +187,7 @@ run_as_bot_user "${VENV_DIR}/bin/python" -m pip install -r "${INSTALL_DIR}/requi
 
 if [[ ! -f "${INSTALL_DIR}/configs/_main.cfg" ]]; then
   info "Launching first setup"
-  run_as_bot_shell "cd '${INSTALL_DIR}' && '${VENV_DIR}/bin/python' main.py"
+  run_first_setup
 fi
 
 if [[ "${SKIP_SERVICE}" != "1" ]]; then
